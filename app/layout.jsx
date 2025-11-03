@@ -1,3 +1,4 @@
+import './globals.css';
 import { getDirection } from '../i18nConfig';
 import StoreProvider from './StoreProvider';
 import ClerkProviderClient from '@/components/ClerkProviderClient';
