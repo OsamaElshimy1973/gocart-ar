@@ -1,24 +1,51 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer components {
-    @keyframes marqueeScroll {
-        0% {
-            transform: translateX(0%);
-        }
-        100% {
-            transform: translateX(-50%);
-        }
-    }
+/* Minimal global styles (Tailwind disabled to avoid build issues). */
+:root {
+    --max-width: 1200px;
+    --gutter: 1rem;
+    --muted: #6b7280;
 }
 
-@layer base {
-    button {
-        cursor: pointer;
-    }
+* { box-sizing: border-box; }
+html,body,#__next { height: 100%; }
+body {
+    margin: 0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: #111827;
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.no-scrollbar::-webkit-scrollbar {
-    display: none;
+/* Utility container */
+.container {
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+}
+
+/* Simple header / navbar spacing */
+nav { background: white; border-bottom: 1px solid #e5e7eb; }
+.nav-inner { display:flex; align-items:center; justify-content:space-between; padding: 1rem 0; }
+
+/* Product grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+}
+.product-card { background: #fff; padding: .75rem; border-radius: .5rem; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+.product-img { width:100%; height:220px; object-fit:cover; border-radius: .5rem; }
+.product-title { font-size: 0.95rem; margin: .5rem 0 0.25rem; color:#111827; }
+.product-price { font-weight: 600; color: #065f46; }
+
+button { cursor: pointer; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Marquee animation (kept) */
+@keyframes marqueeScroll {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
 }
