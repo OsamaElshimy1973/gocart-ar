@@ -1,18 +1,20 @@
 // /app/[lang]/layout.js
 
-import { getDirection } from '../../i18nConfig'; // Import your helper
-import ClientProvider from '@/i18n/ClientProvider'; // Import the new provider
+import { getDirection } from '../../i18nConfig';
+import ClientProvider from '@/i18n/ClientProvider';
+import Header from '@/components/Header'; // 👈 Import Header
 
 export default function RootLayout({ children, params }) {
   const { lang } = params;
-  const dir = getDirection(lang); // Use the helper from i18nConfig
+  const dir = getDirection(lang);
 
   return (
-    // 1. Set the language and direction on the <html> tag
     <html lang={lang} dir={dir}>
       <body>
-        {/* 2. Wrap children with the ClientProvider */}
         <ClientProvider lng={lang}>
+          {/* 💥 NEW: Render the Header component, passing the current language */}
+          <Header lang={lang} /> 
+          
           {children}
         </ClientProvider>
       </body>
